@@ -64,7 +64,9 @@ function homePageRoute({ router, db }) {
           query.push({ TechStack: { $in: TechStack } });
         }
         if (isAvailable) {
-          query.push({ isAvailable });
+          query.push({ isAvailable: true });
+        } else {
+          query.push({ isAvailable: false });
         }
         await collection
           .find(
@@ -113,6 +115,14 @@ function homePageRoute({ router, db }) {
           isAvailable = false
         } = req.body || {};
         TechStack = TechStack.split(",");
+        if(typeof isAvailable === void 0){
+          isAvailable = false
+        } else if(isAvailable){
+          isAvailable = true
+        }
+        if(TotalExp){
+          TotalExp -= 0;
+        }
         collection.insert(
           [
             {
