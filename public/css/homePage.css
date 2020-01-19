@@ -1,0 +1,15 @@
+.page-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+body {
+  display: flex;
+  flex: 1;
+}
+
+.home-page-filter-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/homePage.css" />
+</head>
+
+<Body>
+  <div class="page-body">
+    <%- include('partials/header'); %>
+    <div class="page-body mx-2">
+      <form action="/home/createemployee" method="GET" class="form-inline mb-0 my-2">
+        <input class="btn btn-primary my-2 my-sm-0" type="submit" value="CREATE NEW EMPLOYEE">
+        </input>
+      </form>
+      <div class="mb-2 d-flex">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Toggle Filters</button>
+        <% if(filterApplied){%> <form action="/home" method="GET" class="form-inline mb-0 ml-2"><input type="submit"
+            value="Reset Filters" class="btn btn-primary"></button></form><% } %>
+      </div>
+      <div id="demo" class="collapse">
+        <form method="POST" class="home-page-filter-wrapper" action="/home/filteremployees">
+          <div class="form-group">
+            <label for="EmpName">Employee Name:</label>
+            <input type="input" class="form-control" id="EmpName" placeholder="Enter Employee Name" name="EmpName">
+          </div>
+          <div class="form-group mx-2">
+            <label for="pwd">Location:</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Location" name="Location">
+          </div>
+          <div class="form-group mx-2">
+            <label for="pwd">Manager Name:</label>
+            <input type="text" class="form-control" id="Manager" placeholder="Manager" name="Manager">
+          </div>
+          <div class="form-group mx-2">
+            <label for="pwd">Total Exp:</label>
+            <input type="text" class="form-control" id="TotalExp" placeholder="Total Exp" name="TotalExp">
+          </div>
+          <div class="form-group mx-2">
+            <label for="pwd">Post:</label>
+            <input type="text" class="form-control" id="Post" placeholder="Post" name="Post">
+          </div>
+          <div class="form-group mx-2">
+            <label for="pwd">Tech Stack (separated by):</label>
+            <input type="text" class="form-control" id="TechStack" placeholder="TechStack" name="TechStack">
+          </div>
+          <div class="checkbox mx-2">
+            <label><input type="checkbox" name="isAvailable">Available?</label>
+          </div>
+          <div class="mx-2"><input type="submit" value="Filter" class="btn btn-primary my-2 my-sm-0"></input></div>
+        </form>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Total Exp.</th>
+            <th scope="col">Post</th>
+            <th scope="col">Tech Stack</th>
+            <th scope="col">Available?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0;i<employees.length;i++){%>
+          <tr>
+            <th scope="row"><%= i %></th>
+            <td><%= employees[i].EmpName%></td>
+            <td><%= employees[i].Location%></td>
+            <td><%= employees[i].Manager%></td>
+            <td><%= employees[i].TotalExp%>yr</td>
+            <td><%= employees[i].Post%></td>
+            <td>
+              <% for(let j=0;j<employees[i].TechStack.length;j++){%>
+              <span><%= employees[i].TechStack[j]%>,</span>
+              <% } %>
+            </td>
+            <td><%= employees[i].isAvailable%></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <%- include('partials/footer'); %>
+  </div>
+  <%-include('partials/scripts'); %>
+  <script type="text/javascript" src="/js/homePage.js"></script>
+</Body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title>Sign In</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/loginPage.css" />
+</head>
+
+<Body>
+  <div class="page-body">
+    <%- include('partials/header'); %>
+    <div class="page-body">
+      <div id="logreg-forms">
+        <form action="/auth/google" method="GET" class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">
+            Sign in
+          </h1>
+          <div class="social-login">
+            <input class="btn btn-primary btn-block google-btn" type="submit" value="Sign in with Google+" />
+          </div>
+        </form>
+
+        <form action="/auth/signin" method="POST" class="form-signin">
+          <p style="text-align:center">OR</p>
+          <input type="text" class="form-control" name="username" placeholder="username" required="true" autofocus="" />
+          <input type="password" class="form-control" name="password" placeholder="Password" required="true" />
+          <input class="btn btn-success btn-block" type="submit" value="Sign in" />
+        </form>
+
+        <hr />
+
+        <form action="/auth/signup" method="GET">
+          <!-- <p>Don't have an account!</p>  -->
+          <input class="btn btn-primary btn-block" type="submit" value="Sign up New Account" />
+        </form>
+        <br />
+      </div>
+    </div>
+    <%- include('partials/footer'); %> <%-include('partials/scripts'); %>
+  </div>
+</Body>
+
+</html>

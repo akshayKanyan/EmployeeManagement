@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>Create New Employee</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/homePage.css" />
+</head>
+
+<Body>
+  <div class="page-body">
+    <%- include('partials/header'); %>
+    <div class="page-body mx-2">
+      <div class="container">
+        <h2>Create Employee</h2>
+        <form method="POST" action="/home/createemployee">
+          <div class="form-group">
+            <label for="EmpName">Employee Name:</label>
+            <input type="input" class="form-control" required id="EmpName" placeholder="Enter Employee Name"
+              name="EmpName">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Location:</label>
+            <input type="text" class="form-control" required id="pwd" placeholder="Location" name="Location">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Manager Name:</label>
+            <input type="text" class="form-control" required id="Manager" placeholder="Manager" name="Manager">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Total Exp:</label>
+            <input type="text" class="form-control" required id="TotalExp" placeholder="Total Exp" name="TotalExp">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Post:</label>
+            <input type="text" class="form-control" required id="Post" placeholder="Post" name="Post">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Tech Stack (separated by):</label>
+            <input type="text" class="form-control" required id="TechStack" placeholder="TechStack" name="TechStack">
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="isAvailable">Available?</label>
+          </div>
+          <input type="submit" value="CREATE" class="btn btn-primary my-2 my-sm-0"></input>
+        </form>
+      </div>
+    </div>
+    <%- include('partials/footer'); %>
+  </div>
+  <%-include('partials/scripts'); %>
+</Body>
+
+</html>
